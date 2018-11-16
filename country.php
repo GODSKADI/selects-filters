@@ -30,18 +30,19 @@
      			$message .= 'Consulta realitzada: ' . $consulta;
      			die($message);
  		}
-    echo "<form action='city.php' method='post'>";
+    echo "<form action='city.php' method='post'>
+    <button type='submit'  >Aceptar</button><br>";
+
  		while( $registre = mysqli_fetch_assoc($resultat) )
  		{
       echo "<label>
       <input type='radio' name='codigo' value='".$registre["Code"]."'>
-      <img src='banderas/Spain.png'>
+      <img src='banderas/".$registre["Name"].".png'>
       ".$registre["Name"]."
       </input><br></label>";
 
  		}
     echo "</select>
-    <button type='submit'  >Aceptar</button>
     <form>";
  	?>
  	</table>
