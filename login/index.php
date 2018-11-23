@@ -18,8 +18,8 @@
       $conn = mysqli_connect('localhost', 'skadi', 'P@ssw0rd');
       mysqli_select_db($conn, 'login');
       if($_POST != NULL ){
-        $user = $_POST['user'];
-        $pass256 = hash('sha256', $_POST['pass']);
+        $user = mysqli_real_escape_string($conn, $_POST['user']);
+        $pass256 = mysqli_real_escape_string($conn, hash('sha256', $_POST['pass']));
         $userIn = "SELECT 'usuario' FROM usuarios WHERE usuario = '$user' AND password = '$pass256';";
         $result = mysqli_query($conn, $userIn);
         $numCol = mysqli_num_rows($result);
